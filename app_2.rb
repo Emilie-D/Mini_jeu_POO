@@ -32,9 +32,9 @@ while human_player.life_points >0 && (player1.life_points > 0 || player2.life_po
 	puts "s - chercher à se soigner "
 	puts 
 	puts "Attaquer un joueur en vue : "
-	puts "0 - "
+	print "0 - "
 	puts "#{player1.show_state}"
-	puts "1 - "
+	print "1 - "
 	puts "#{player2.show_state}"
 	puts "================================="
 	action = gets.chomp
@@ -64,9 +64,8 @@ while human_player.life_points >0 && (player1.life_points > 0 || player2.life_po
 end 
 
 puts "La partie est finie"
-if 
-	human_player.life_points > player1.life_points || player2.life_points
-	puts "BRAVO ! Tu as gagné "
+if (player1.life_points == 0) && (player2.life_points == 0) 
+	puts "BRAVO ! Tu as gagné"
 else 
 	puts "Tu as perdu .. Reviens vite !"
 end
