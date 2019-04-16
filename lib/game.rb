@@ -25,7 +25,7 @@ class Game
 		puts "Bienvenue dans le menu, plusieurs choix s'offrent à toi :"
 		puts "Attaquer un joueur :"
 		enemies.each.with_index do |enemies, index|
-		  puts "#{index} - #{enemies.show_state}"
+		  puts "#{index} - #{enemies.show_state}" if enemies.show_state
 		end
 		puts "4 - Chercher une meilleure arme"
 		puts "5 - Chercher à se soigner"
@@ -34,15 +34,19 @@ class Game
 	def menu_choice(str) #permet au joueur de rentrer son choix et d'excécuter la commande
 		if str == "0"
 			puts "Tu as choisi d'attaquer Josiane"
+			system('say "Attack Josiane"')
 			human_player.attacks(enemies[0])
 		elsif str == "1"
 			puts "Tu as choisi d'attaquer José"
+			system('say "Attack Joséééééééé"')
 			human_player.attacks(enemies[1])
 		elsif str == "2"
 			puts "Tu as choisi d'attaquer François"
+			system('say "Attack Françoaaaaaaaa"')
 			human_player.attacks(enemies[2])
 		elsif str == "3"
 			puts "Tu as choisi d'attaquer Claude"
+			system('say "Attack Clooooooode"')
 			human_player.attacks(enemies[3])
 		elsif str == "4"
 			puts "Tu as choisi de chercher une meilleure arme"
@@ -62,12 +66,17 @@ class Game
 	end
 
 	def end # si tout les enemies sont morts tu as gagné 
-		if enemies.each do |enemies| enemies.show_state = 0
-	puts "BRAVO ! Tu as gagné"
-		else 
-	puts "Tu as perdu .. Reviens vite !"
+		compteur = 0
+		enemies.each do |enemies|
+			if enemies.life_points <= 0
+	          compteur += 1
+	        end
+	    end
+	    if compteur == 4
+            system('say "BRAVO ! Tu as gagnée"') 
+		elsif human_player.life_points <= 0
+	      puts "Tu as perdu .. Reviens vite !"
+	      system('say "LOOSER"')
 		end
-	end
 	end 
-
 end

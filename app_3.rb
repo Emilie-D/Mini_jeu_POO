@@ -23,10 +23,6 @@ while my_game.is_still_ongoing?
 	my_game.menu
 	str = gets.chomp
 	my_game.menu_choice(str)
-	if my_game.enemies.empty?
-	my_game.enemies_attack 
-	break
-  end
+	my_game.enemies_attack
+  my_game.end
 end
-
-my_game.end

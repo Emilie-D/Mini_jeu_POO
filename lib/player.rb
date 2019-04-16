@@ -7,7 +7,8 @@ class Player
 	end 
 
 	def show_state #récupère le nom et les points de vie 
-		"#{name} a #{@life_points} points de vie" 
+		return "#{name} a #{@life_points} points de vie" if @life_points > 0
+		return nil
 	end 
 
 	def gets_damage(damage_received) #met à jour les points de vie en fonction de dégats subits
